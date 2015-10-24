@@ -63,11 +63,12 @@ A fully customizable and flexible paging menu controller built from other view c
 
 **CocoaPods**
 
-PageMenu is available through [CocoaPods](http://cocoapods.org). !! Swift only !!
+PageMenu is available through [CocoaPods](http://cocoapods.org). !! Objective C only !!
 
 To install add the following line to your Podfile:
 
-    pod 'PageMenu'
+    pod 'PageMenu', :git => 'https://github.com/Navirize/PageMenu.git'
+
 
 **Carthage**
 
