@@ -33,7 +33,7 @@
     _badgeLabel.font = [UIFont systemFontOfSize:13.0];
     _badgeLabel.numberOfLines = 1;
     _badgeLabel.textAlignment = NSTextAlignmentCenter;
-    _badgeLabel.baselineAdjustment = UIBaselineAdjustmentAlignBaselines;
+    _badgeLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
     _badgeLabel.hidden = YES;
     
     _menuItemSeparator.hidden = YES;
