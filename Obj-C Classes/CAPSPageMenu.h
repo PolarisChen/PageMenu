@@ -24,6 +24,8 @@
 @property (nonatomic) UILabel *badgeLabel;
 @property (nonatomic) UIView *menuItemSeparator;
 
+@property (nonatomic, readonly) CGFloat menuItemWidth;
+
 - (void)setUpMenuItemView:(CGFloat)menuItemWidth menuScrollViewHeight:(CGFloat)menuScrollViewHeight indicatorHeight:(CGFloat)indicatorHeight separatorPercentageHeight:(CGFloat)separatorPercentageHeight separatorWidth:(CGFloat)separatorWidth separatorRoundEdges:(BOOL)separatorRoundEdges menuItemSeparatorColor:(UIColor *)menuItemSeparatorColor;
 
 - (void)setTitleText:(NSString *)text;

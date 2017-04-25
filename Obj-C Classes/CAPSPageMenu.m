@@ -16,6 +16,8 @@
 
 - (void)setUpMenuItemView:(CGFloat)menuItemWidth menuScrollViewHeight:(CGFloat)menuScrollViewHeight indicatorHeight:(CGFloat)indicatorHeight separatorPercentageHeight:(CGFloat)separatorPercentageHeight separatorWidth:(CGFloat)separatorWidth separatorRoundEdges:(BOOL)separatorRoundEdges menuItemSeparatorColor:(UIColor *)menuItemSeparatorColor
 {
+    _menuItemWidth = menuItemWidth;
+    
     _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, menuItemWidth, menuScrollViewHeight - indicatorHeight)];
     _menuItemSeparator = [[UIView alloc] initWithFrame:CGRectMake(menuItemWidth - (separatorWidth / 2), floor(menuScrollViewHeight * ((1.0 - separatorPercentageHeight) / 2.0)), separatorWidth, floor(menuScrollViewHeight * separatorPercentageHeight))];
     
@@ -23,7 +25,7 @@
         _menuItemSeparator.layer.cornerRadius = _menuItemSeparator.frame.size.width / 2;
     }
     
-    _badgeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 18, 18)];
+    _badgeLabel = [[UILabel alloc] init];
     _badgeLabel.backgroundColor = [UIColor redColor];
     _badgeLabel.hidden = YES;
     
@@ -49,6 +51,12 @@
         _badgeLabel.numberOfLines = 1;
         _badgeLabel.textAlignment = NSTextAlignmentCenter;
         _badgeLabel.baselineAdjustment = UIBaselineAdjustmentAlignBaselines;
+        
+        CGSize textSize = [_titleLabel.text sizeWithAttributes:@{NSFontAttributeName:_titleLabel.font}];
+        CGFloat strikeWidth = textSize.width;
+        CGRect frame = CGRectMake((_menuItemWidth + strikeWidth) / 2, 0.0, 18.0, 18.0);
+        [_badgeLabel setFrame:frame];
+        [_badgeLabel sizeToFit];
     }
 }
 
