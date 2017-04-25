@@ -26,7 +26,14 @@
     }
     
     _badgeLabel = [[UILabel alloc] init];
+    _badgeLabel.layer.masksToBounds = YES;
+    _badgeLabel.layer.cornerRadius = 9.0;
     _badgeLabel.backgroundColor = [UIColor redColor];
+    _badgeLabel.textColor = [UIColor whiteColor];
+    _badgeLabel.font = [UIFont systemFontOfSize:13.0];
+    _badgeLabel.numberOfLines = 1;
+    _badgeLabel.textAlignment = NSTextAlignmentCenter;
+    _badgeLabel.baselineAdjustment = UIBaselineAdjustmentAlignBaselines;
     _badgeLabel.hidden = YES;
     
     _menuItemSeparator.hidden = YES;
@@ -48,15 +55,10 @@
     if (_badgeLabel) {
         _badgeLabel.hidden = NO;
         _badgeLabel.text = text;
-        _badgeLabel.numberOfLines = 1;
-        _badgeLabel.textAlignment = NSTextAlignmentCenter;
-        _badgeLabel.baselineAdjustment = UIBaselineAdjustmentAlignBaselines;
-        
-        CGSize textSize = [_titleLabel.text sizeWithAttributes:@{NSFontAttributeName:_titleLabel.font}];
-        CGFloat strikeWidth = textSize.width;
-        CGRect frame = CGRectMake((_menuItemWidth + strikeWidth) / 2, 0.0, 18.0, 18.0);
-        [_badgeLabel setFrame:frame];
-        [_badgeLabel sizeToFit];
+        CGFloat titleTextWidth = [_titleLabel.text sizeWithAttributes:@{NSFontAttributeName:_titleLabel.font}].width;
+        CGFloat badgeTextWidth = [text sizeWithAttributes:@{NSFontAttributeName:_badgeLabel.font}].width;
+        CGRect badgeFrame = CGRectMake((_menuItemWidth + titleTextWidth) / 2, 0.0, MAX(18.0, badgeTextWidth + 4.0), 18.0);
+        [_badgeLabel setFrame:badgeFrame];
     }
 }
 
