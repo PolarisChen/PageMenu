@@ -60,7 +60,7 @@
             _badgeLabel.text = text;
             CGFloat titleTextWidth = [_titleLabel.text sizeWithAttributes:@{NSFontAttributeName:_titleLabel.font}].width;
             CGFloat badgeTextWidth = [text sizeWithAttributes:@{NSFontAttributeName:_badgeLabel.font}].width;
-            CGRect badgeFrame = CGRectMake((_menuItemWidth + titleTextWidth) / 2, 0.0, MAX(18.0, badgeTextWidth + 4.0), 18.0);
+            CGRect badgeFrame = CGRectMake((_menuItemWidth + titleTextWidth) / 2 + 2.0, 4.0, MAX(18.0, badgeTextWidth + 4.0), 18.0);
             [_badgeLabel setFrame:badgeFrame];
         }
     }
