@@ -53,12 +53,16 @@
 - (void)setBadgeText:(NSString *)text
 {
     if (_badgeLabel) {
-        _badgeLabel.hidden = NO;
-        _badgeLabel.text = text;
-        CGFloat titleTextWidth = [_titleLabel.text sizeWithAttributes:@{NSFontAttributeName:_titleLabel.font}].width;
-        CGFloat badgeTextWidth = [text sizeWithAttributes:@{NSFontAttributeName:_badgeLabel.font}].width;
-        CGRect badgeFrame = CGRectMake((_menuItemWidth + titleTextWidth) / 2, 0.0, MAX(18.0, badgeTextWidth + 4.0), 18.0);
-        [_badgeLabel setFrame:badgeFrame];
+        if (text == nil || text.length == 0 || [text isEqualToString:@"0"]) {
+            _badgeLabel.hidden = YES;
+        } else {
+            _badgeLabel.hidden = NO;
+            _badgeLabel.text = text;
+            CGFloat titleTextWidth = [_titleLabel.text sizeWithAttributes:@{NSFontAttributeName:_titleLabel.font}].width;
+            CGFloat badgeTextWidth = [text sizeWithAttributes:@{NSFontAttributeName:_badgeLabel.font}].width;
+            CGRect badgeFrame = CGRectMake((_menuItemWidth + titleTextWidth) / 2, 0.0, MAX(18.0, badgeTextWidth + 4.0), 18.0);
+            [_badgeLabel setFrame:badgeFrame];
+        }
     }
 }
 
