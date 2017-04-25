@@ -23,9 +23,14 @@
         _menuItemSeparator.layer.cornerRadius = _menuItemSeparator.frame.size.width / 2;
     }
     
+    _badgeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 18, 18)];
+    _badgeLabel.backgroundColor = [UIColor redColor];
+    _badgeLabel.hidden = YES;
+    
     _menuItemSeparator.hidden = YES;
     [self addSubview:_menuItemSeparator];
     [self addSubview:_titleLabel];
+    [self addSubview:_badgeLabel];
 }
 - (void)setTitleText:(NSString *)text
 {
@@ -34,6 +39,16 @@
         _titleLabel.numberOfLines = 0;
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.baselineAdjustment = UIBaselineAdjustmentAlignBaselines;
+    }
+}
+- (void)setBadgeText:(NSString *)text
+{
+    if (_badgeLabel) {
+        _badgeLabel.hidden = NO;
+        _badgeLabel.text = text;
+        _badgeLabel.numberOfLines = 1;
+        _badgeLabel.textAlignment = NSTextAlignmentCenter;
+        _badgeLabel.baselineAdjustment = UIBaselineAdjustmentAlignBaselines;
     }
 }
 
@@ -934,6 +949,13 @@ NSString * const CAPSPageMenuOptionHideTopMenuBar                       = @"hide
 - (NSArray *)menuItemWidths
 {
     return _mutableMenuItemWidths;
+}
+
+
+// MARK: Badge
+- (void)setBadgeText:(NSString *)badgeText atIndex:(NSInteger)index {
+    MenuItemView *menuItemView = (MenuItemView *)_mutableMenuItems[index];
+    [menuItemView setBadgeText:badgeText];
 }
 
 @end

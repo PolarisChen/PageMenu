@@ -21,11 +21,13 @@
 @interface MenuItemView : UIView
 
 @property (nonatomic) UILabel *titleLabel;
+@property (nonatomic) UILabel *badgeLabel;
 @property (nonatomic) UIView *menuItemSeparator;
 
 - (void)setUpMenuItemView:(CGFloat)menuItemWidth menuScrollViewHeight:(CGFloat)menuScrollViewHeight indicatorHeight:(CGFloat)indicatorHeight separatorPercentageHeight:(CGFloat)separatorPercentageHeight separatorWidth:(CGFloat)separatorWidth separatorRoundEdges:(BOOL)separatorRoundEdges menuItemSeparatorColor:(UIColor *)menuItemSeparatorColor;
 
 - (void)setTitleText:(NSString *)text;
+- (void)setBadgeText:(NSString *)text;
 
 @end
 
@@ -71,6 +73,8 @@
 
 - (void)addPageAtIndex:(NSInteger)index;
 - (void)moveToPage:(NSInteger)index;
+
+- (void)setBadgeText:(NSString *)badgeText atIndex:(NSInteger)index;
 
 - (instancetype)initWithViewControllers:(NSArray *)viewControllers frame:(CGRect)frame options:(NSDictionary *)options;
 
