@@ -47,12 +47,14 @@
                                  CAPSPageMenuOptionMenuItemFont: [UIFont fontWithName:@"HelveticaNeue" size:13.0],
                                  CAPSPageMenuOptionMenuHeight: @(40.0),
                                  CAPSPageMenuOptionMenuItemWidth: @(90.0),
-                                 CAPSPageMenuOptionCenterMenuItems: @(YES)
+                                 CAPSPageMenuOptionCenterMenuItems: @(YES),
+                                 CAPSPageMenuOptionBadgeBackgroundColor: [UIColor orangeColor],
+                                 CAPSPageMenuOptionBadgeTextColor: [UIColor whiteColor]
                                  };
 
     _pageMenu = [[CAPSPageMenu alloc] initWithViewControllers:controllerArray frame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height) options:parameters];
     [self.view addSubview:_pageMenu.view];
-
+    
     [_pageMenu setBadgeText:@"1" atIndex:0];
     [_pageMenu setBadgeText:@"12" atIndex:1];
     [_pageMenu setBadgeText:@"123" atIndex:2];
