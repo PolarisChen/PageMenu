@@ -58,6 +58,8 @@
 @property (nonatomic) UIColor *viewBackgroundColor;
 @property (nonatomic) UIColor *bottomMenuHairlineColor;
 @property (nonatomic) UIColor *menuItemSeparatorColor;
+@property (nonatomic) UIColor *badgeBackgroundColor;
+@property (nonatomic) UIColor *badgeTextColor;
 
 @property (nonatomic) UIFont *menuItemFont;
 @property (nonatomic) CGFloat menuItemSeparatorPercentageHeight;
@@ -102,5 +104,7 @@ extern NSString * const CAPSPageMenuOptionMenuItemWidthBasedOnTitleTextWidth;
 extern NSString * const CAPSPageMenuOptionScrollAnimationDurationOnMenuItemTap;
 extern NSString * const CAPSPageMenuOptionCenterMenuItems;
 extern NSString * const CAPSPageMenuOptionHideTopMenuBar;
+extern NSString * const CAPSPageMenuOptionBadgeBackgroundColor;
+extern NSString * const CAPSPageMenuOptionBadgeTextColor;
 
 @end

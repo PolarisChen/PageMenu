@@ -28,8 +28,6 @@
     _badgeLabel = [[UILabel alloc] init];
     _badgeLabel.layer.masksToBounds = YES;
     _badgeLabel.layer.cornerRadius = 9.0;
-    _badgeLabel.backgroundColor = [UIColor redColor];
-    _badgeLabel.textColor = [UIColor whiteColor];
     _badgeLabel.font = [UIFont systemFontOfSize:13.0];
     _badgeLabel.numberOfLines = 1;
     _badgeLabel.textAlignment = NSTextAlignmentCenter;
@@ -122,6 +120,8 @@ NSString * const CAPSPageMenuOptionMenuItemWidthBasedOnTitleTextWidth   = @"menu
 NSString * const CAPSPageMenuOptionScrollAnimationDurationOnMenuItemTap = @"scrollAnimationDurationOnMenuItemTap";
 NSString * const CAPSPageMenuOptionCenterMenuItems                      = @"centerMenuItems";
 NSString * const CAPSPageMenuOptionHideTopMenuBar                       = @"hideTopMenuBar";
+NSString * const CAPSPageMenuOptionBadgeBackgroundColor                 = @"badgeBackgroundColor";
+NSString * const CAPSPageMenuOptionBadgeTextColor                       = @"badgeTextColor";
 
 - (instancetype)initWithViewControllers:(NSArray *)viewControllers frame:(CGRect)frame options:(NSDictionary *)options
 {
@@ -180,6 +180,10 @@ NSString * const CAPSPageMenuOptionHideTopMenuBar                       = @"hide
                 _centerMenuItems = [options[key] boolValue];
             } else if ([key isEqualToString:CAPSPageMenuOptionHideTopMenuBar]) {
                 _hideTopMenuBar = [options[key] boolValue];
+            } else if ([key isEqualToString:CAPSPageMenuOptionBadgeBackgroundColor]) {
+                _badgeBackgroundColor = options[key];
+            } else if ([key isEqualToString:CAPSPageMenuOptionBadgeTextColor]) {
+                _badgeTextColor = options[key];
             }
         }
         
@@ -224,6 +228,8 @@ NSString * const CAPSPageMenuOptionHideTopMenuBar                       = @"hide
     _viewBackgroundColor          = [UIColor whiteColor];
     _bottomMenuHairlineColor      = [UIColor whiteColor];
     _menuItemSeparatorColor       = [UIColor lightGrayColor];
+    _badgeBackgroundColor         = [UIColor redColor];
+    _badgeTextColor               = [UIColor whiteColor];
     
     _menuItemFont = [UIFont systemFontOfSize:15.0];
     _menuItemSeparatorPercentageHeight = 0.2;
@@ -410,6 +416,10 @@ NSString * const CAPSPageMenuOptionHideTopMenuBar                       = @"hide
                 menuItemView.menuItemSeparator.hidden = NO;
             }
         }
+        
+        // Configure menu item badge label
+        menuItemView.badgeLabel.backgroundColor = _badgeBackgroundColor;
+        menuItemView.badgeLabel.textColor = _badgeTextColor;
         
         // Add menu item view to menu scroll view
         [_menuScrollView addSubview:menuItemView];
