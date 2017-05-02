@@ -25,6 +25,7 @@
 @property (nonatomic) UIView *menuItemSeparator;
 
 @property (nonatomic, readonly) CGFloat menuItemWidth;
+@property (nonatomic, readonly) CGFloat menuScrollViewHeight;
 
 - (void)setUpMenuItemView:(CGFloat)menuItemWidth menuScrollViewHeight:(CGFloat)menuScrollViewHeight indicatorHeight:(CGFloat)indicatorHeight separatorPercentageHeight:(CGFloat)separatorPercentageHeight separatorWidth:(CGFloat)separatorWidth separatorRoundEdges:(BOOL)separatorRoundEdges menuItemSeparatorColor:(UIColor *)menuItemSeparatorColor;
 

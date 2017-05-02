@@ -17,6 +17,7 @@
 - (void)setUpMenuItemView:(CGFloat)menuItemWidth menuScrollViewHeight:(CGFloat)menuScrollViewHeight indicatorHeight:(CGFloat)indicatorHeight separatorPercentageHeight:(CGFloat)separatorPercentageHeight separatorWidth:(CGFloat)separatorWidth separatorRoundEdges:(BOOL)separatorRoundEdges menuItemSeparatorColor:(UIColor *)menuItemSeparatorColor
 {
     _menuItemWidth = menuItemWidth;
+    _menuScrollViewHeight = menuScrollViewHeight;
     
     _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, menuItemWidth, menuScrollViewHeight - indicatorHeight)];
     _menuItemSeparator = [[UIView alloc] initWithFrame:CGRectMake(menuItemWidth - (separatorWidth / 2), floor(menuScrollViewHeight * ((1.0 - separatorPercentageHeight) / 2.0)), separatorWidth, floor(menuScrollViewHeight * separatorPercentageHeight))];
@@ -58,7 +59,10 @@
             _badgeLabel.text = text;
             CGFloat titleTextWidth = [_titleLabel.text sizeWithAttributes:@{NSFontAttributeName:_titleLabel.font}].width;
             CGFloat badgeTextWidth = [text sizeWithAttributes:@{NSFontAttributeName:_badgeLabel.font}].width;
-            CGRect badgeFrame = CGRectMake((_menuItemWidth + titleTextWidth) / 2 + 2.0, 4.0, MAX(18.0, badgeTextWidth + 4.0), 18.0);
+            CGFloat badgeHeight = 18.0;
+            CGFloat badgePadding = 5.0;
+            CGFloat badgeMarginLeft = 1.0;
+            CGRect badgeFrame = CGRectMake((_menuItemWidth + titleTextWidth) / 2 + badgeMarginLeft, _menuScrollViewHeight / 2 - badgeHeight, MAX(badgeHeight, badgeTextWidth + badgePadding * 2), badgeHeight);
             [_badgeLabel setFrame:badgeFrame];
         }
     }
